@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/*
+ * Countless design tokens. Calm, civic, ledger-like: warm paper, ink, thin rules.
+ * Text colours meet WCAG AA on --color-paper (ink-3 is the lightest allowed for body text).
+ */
+@theme {
+  --color-paper: #f9f7f2;
+  --color-surface: #ffffff;
+  --color-sunk: #f2efe7;
+  --color-ink: #1c1a16;
+  --color-ink-2: #4a463e;
+  --color-ink-3: #6b665b;
+  --color-rule: #e4dfd4;
+  --color-rule-strong: #cdc6b6;
+
+  --color-action: #1f4fa8;
+  --color-action-strong: #163d85;
+  --color-action-soft: #e9eef9;
+
+  --color-safe: #1b6a44;
+  --color-safe-soft: #e6f1ea;
+  --color-cost: #a43a17;
+  --color-cost-soft: #f9e9e2;
+  --color-warn: #865700;
+  --color-warn-soft: #f8eed6;
+}
+
+@theme inline {
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: var(--color-paper);
+}
+
+body {
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-action);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 50;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Radios drawn in the ledger style instead of the browser default. */
+input[type="radio"] {
+  appearance: none;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: 2px solid var(--color-rule-strong);
+  border-radius: 999px;
+  background: var(--color-surface);
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+input[type="radio"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-action);
+  transform: scale(0);
+  transition: transform 120ms ease;
+}
+input[type="radio"]:hover {
+  border-color: var(--color-ink-3);
+}
+input[type="radio"]:checked {
+  border-color: var(--color-action);
+  box-shadow: 0 0 0 3px var(--color-action-soft);
+}
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+/* The whole row reads as selected, not just the dot. */
+label:has(> input[type="radio"]:checked) {
+  background: var(--color-action-soft);
+}
+label:has(> input[type="radio"]) {
+  transition: background-color 120ms ease;
+}
+
+/* The perforated left edge of an SSI check stub. */
+.stub-perforation {
+  background-image: radial-gradient(circle at 0 6px, var(--color-paper) 2.5px, transparent 3px);
+  background-size: 6px 12px;
+  background-repeat: repeat-y;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

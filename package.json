@@ -1,0 +1,41 @@
+{
+  "name": "countless",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "smoke:paypal": "tsx scripts/paypal-smoke.ts",
+    "smoke:ai": "tsx scripts/ai-smoke.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/groq": "^1.2.9",
+    "@electric-sql/pglite": "^0.5.15",
+    "@paypal/agent-toolkit": "^1.11.0",
+    "ai": "^4.3.19",
+    "lucide-react": "^1.70.0",
+    "next": "16.4.5",
+    "pg": "^8.23.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^18.0.9",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.5",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^5.1.0"
+  }
+}
