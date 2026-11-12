@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  // Keep the dev "N" badge out of demo recordings.
+  devIndicators: false,
   partialPrefetching: true,
   // PGlite ships a WASM Postgres; keep it (and pg) out of the server bundle.
   serverExternalPackages: ["@electric-sql/pglite", "pg"],
