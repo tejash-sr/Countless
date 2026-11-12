@@ -103,7 +103,7 @@ export async function reviewSettlement(bill: Bill, members: Member[], s: Settlem
 Look up EVERY order with get_order (you can call several tools at once) and the payout with get_payout_batch, then compare with what we expected:
 ${expected}
 
-Then write 2-3 short plain-English sentences for the family: who paid what, whether ${bill.vendorName} received the money, and that the person on SSI never received cash. No jargon, no IDs.
+Then write 2-3 short plain-English sentences for the family: which person paid how much, by name (the payers are friends and family; the person on SSI paid nothing and received nothing), whether ${bill.vendorName} received the money, and that the person on SSI never received cash. No jargon, no IDs.
 On the last line write exactly VERIFIED if every order is COMPLETED with the expected amount and the payout succeeded or is pending/processing; otherwise write NEEDS ATTENTION and say what is wrong.`,
   });
 
@@ -122,7 +122,7 @@ ${expected}
 What PayPal returned:
 ${JSON.stringify(results)}
 
-Write 2-3 short plain-English sentences for the family: who paid what, whether ${bill.vendorName} received the money, and that the person on SSI never received cash. No jargon, no IDs.
+Write 2-3 short plain-English sentences for the family: which person paid how much, by name (the payers are friends and family; the person on SSI paid nothing and received nothing), whether ${bill.vendorName} received the money, and that the person on SSI never received cash. No jargon, no IDs.
 On the last line write exactly VERIFIED if every order is COMPLETED with the expected amount and the payout succeeded or is pending/processing; otherwise write NEEDS ATTENTION and say what is wrong.`,
     });
     text = fin.text.trim();
