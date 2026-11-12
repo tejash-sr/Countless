@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   // PGlite ships a WASM Postgres; keep it (and pg) out of the server bundle.
   serverExternalPackages: ["@electric-sql/pglite", "pg"],
+  // The demo opens straight on a real circle: the product, not a marketing page.
+  async redirects() {
+    return [{ source: "/", destination: "/c/rosa", permanent: false }];
+  },
   experimental: {
     // Bill photos are shrunk in the browser, but allow headroom over the 1MB default.
     serverActions: { bodySizeLimit: "6mb" },

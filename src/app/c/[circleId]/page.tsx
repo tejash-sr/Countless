@@ -103,6 +103,10 @@ async function CircleView({
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
+          <Link href={`/c/${circle.id}/ledger`} className={buttonClass.secondary}>
+            <Receipt className="size-4" aria-hidden="true" />
+            Ledger
+          </Link>
           <Link href={`/join/${circle.id}`} className={buttonClass.secondary}>
             <UserPlus className="size-4" aria-hidden="true" />
             Invite someone

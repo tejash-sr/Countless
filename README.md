@@ -91,7 +91,7 @@ npm run smoke:ai      # Groq bill reading
 
 ## Stack
 
-Next.js 16 (App Router, Server Actions) · TypeScript · Tailwind CSS 4 · Vercel AI SDK + Groq · PayPal REST APIs + Agent Toolkit · PGlite / Postgres · Vitest
+Next.js 16 (App Router, Server Actions) · TypeScript · Tailwind CSS 4 · AG Grid (ledger) · Vercel AI SDK + Groq · PayPal REST APIs + Agent Toolkit · PGlite / Postgres · Vitest
 
 ## License
 
