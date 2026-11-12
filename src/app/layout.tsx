@@ -16,10 +16,12 @@ export const metadata: Metadata = {
 
 function Mark() {
   return (
-    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" className="shrink-0">
-      <rect x="1" y="4" width="20" height="14" rx="2.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="6.5" y1="4.8" x2="6.5" y2="17.2" stroke="currentColor" strokeWidth="1.2" strokeDasharray="1.6 1.6" />
-      <path d="M10.5 11.2l2.2 2.2 4.3-4.6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    // A coin with an open "C": money passes through, and the green dot is the $0 Countless keeps.
+    <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" className="shrink-0">
+      <circle cx="14" cy="14" r="13" fill="#1c1a16" />
+      <circle cx="14" cy="14" r="10.4" fill="none" stroke="#f9f7f2" strokeOpacity="0.25" strokeWidth="1" />
+      <path d="M18.6 9.4A6.5 6.5 0 1 0 18.6 18.6" fill="none" stroke="#f9f7f2" strokeWidth="2.6" strokeLinecap="round" />
+      <circle cx="20.6" cy="14" r="1.9" fill="#3fb37a" />
     </svg>
   );
 }

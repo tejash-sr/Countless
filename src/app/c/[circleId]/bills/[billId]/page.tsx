@@ -6,7 +6,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { CheckStub } from "@/components/check-stub";
 import { RuleTag } from "@/components/rule-tag";
-import { Callout, Pill } from "@/components/ui";
+import { AiTag, Callout, Pill } from "@/components/ui";
 import { getBill, getCircle, listMembers, profileOf, type BillStatus } from "@/lib/data";
 import { CATEGORY_LABEL, shortDate, usd } from "@/lib/format";
 import { addMonths, expenseKindFor, simulate } from "@/lib/ssi/engine";
@@ -195,11 +195,15 @@ async function BillView({ params }: { params: Promise<{ circleId: string; billId
                 ? `Approved by ${s.approvedBy}. ${bill.vendorName} has been paid and ${first} never received cash.`
                 : `Approved by ${s.approvedBy}, but some payments failed. Nothing is retried automatically.`}
             </Callout>
-            <div className="mt-8 border-t border-rule pt-6">
-              <h3 className="font-serif text-lg font-semibold">Agent check</h3>
+            <div className="mt-8 rounded-xl border border-agent/25 border-l-4 border-l-agent bg-agent-soft p-5 sm:p-6">
+              <div className="flex flex-wrap items-center gap-2">
+                <AiTag>AI agent · read-only</AiTag>
+                <span className="text-xs font-medium text-agent">PayPal Agent Toolkit + Groq</span>
+              </div>
+              <h3 className="mt-3 font-serif text-xl font-semibold">Did the money really move?</h3>
               <p className="mt-1 max-w-2xl text-sm text-ink-2">
-                A read-only AI agent looks every charge and the payout up in PayPal itself, using the PayPal Agent
-                Toolkit. It has no tool that can move money.
+                An AI agent looks every charge and the payout up in PayPal itself and tells the family what happened in
+                plain words. It has no tool that can move money.
               </p>
               {s.review ? (
                 <div className="mt-4 space-y-3">
@@ -211,12 +215,12 @@ async function BillView({ params }: { params: Promise<{ circleId: string; billId
                       {s.review.model} · {s.review.toolCalls.length} PayPal lookups · {(s.review.ms / 1000).toFixed(1)} s
                     </span>
                   </div>
-                  <p className="max-w-2xl whitespace-pre-line rounded-lg border border-rule bg-surface p-4 text-[15px] leading-relaxed">
+                  <p className="max-w-2xl whitespace-pre-line rounded-lg border border-agent/20 bg-surface p-4 text-[15px] leading-relaxed shadow-sm">
                     {s.review.summary}
                   </p>
                   <ul className="flex flex-wrap gap-2" aria-label="PayPal lookups the agent made">
                     {s.review.toolCalls.map((c, i) => (
-                      <li key={i} className="rounded border border-rule bg-sunk px-2 py-1 font-mono text-xs text-ink-2">
+                      <li key={i} className="rounded border border-agent/20 bg-surface px-2 py-1 font-mono text-xs text-agent">
                         {c.tool}({c.target})
                       </li>
                     ))}

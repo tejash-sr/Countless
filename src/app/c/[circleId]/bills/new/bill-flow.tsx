@@ -3,7 +3,7 @@
 import { AlertTriangle, Camera, CheckCircle2, FileText, Loader2 } from "lucide-react";
 import { useMemo, useState, useTransition } from "react";
 import { buildRouteOptions, recommendedRoute, RouteMeter } from "@/components/route-meter";
-import { Callout, buttonClass } from "@/components/ui";
+import { AiTag, Callout, buttonClass } from "@/components/ui";
 import type { Circle, Member } from "@/lib/data";
 import { CATEGORY_LABEL, usd } from "@/lib/format";
 import { expenseKindFor, type GiftRoute } from "@/lib/ssi/engine";
@@ -173,8 +173,9 @@ export function BillFlow({
 
         {stage === "review" && read ? (
           <p className="mt-2 flex flex-wrap items-center gap-2 text-sm text-ink-2">
+            <AiTag>AI read</AiTag>
             <CheckCircle2 className="size-4 text-safe" aria-hidden="true" />
-            Read from the {read.source} in {(read.ms / 1000).toFixed(1)} s by {read.model}.
+            Read from the {read.source} in {(read.ms / 1000).toFixed(1)} s by {read.model}. Check the fields below.
             <button
               type="button"
               className="font-semibold text-action underline-offset-2 hover:underline"

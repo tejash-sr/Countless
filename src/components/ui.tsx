@@ -1,4 +1,15 @@
+import { Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
+
+/** Marks anything an AI model or agent produced, in one colour across the app. */
+export function AiTag({ children }: { children: ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-agent px-2.5 py-1 text-xs font-semibold tracking-wide text-white">
+      <Sparkles className="size-3.5" aria-hidden="true" />
+      {children}
+    </span>
+  );
+}
 
 export type Tone = "safe" | "cost" | "warn" | "neutral" | "action";
 
