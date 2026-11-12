@@ -20,6 +20,8 @@ Families don't know this rule, and even those who do have no easy way to pool mo
 
 6. **An agent checks the money with PayPal.** After payment, a read-only Groq agent (openai/gpt-oss-120b) uses the PayPal Agent Toolkit's `get_order` tool to look up every charge, plus a payout lookup tool for the vendor payment, compares them with what was expected, and writes a plain-language receipt marked "Verified with PayPal" or "Needs attention". It has no tool that can move money.
 
+7. **One ledger for every dollar.** The circle's Ledger page (AG Grid) lists every charge and payout with its PayPal reference, PayPal status and the agent's verdict, searchable and sortable, with money in, money out and "held by Countless" (always $0.00).
+
 The AI never decides benefit rules and never moves money on its own: one model reads documents, one agent audits with read-only tools; rules are code with tests; a human presses Approve.
 
 ## How PayPal is used
